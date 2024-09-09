@@ -1,0 +1,13 @@
+version: '3.2'
+services:
+  docker-monitor:
+    env_file:
+      - .env
+    build:
+      context: ./
+      dockerfile: .Dockerfile
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: "node app.js"
+    user: root
+    restart: unless-stopped
